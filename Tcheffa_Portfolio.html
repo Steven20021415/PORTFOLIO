@@ -1,0 +1,732 @@
+
+
+Index · HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steven Tcheffa - Electrical Engineer | Green Hydrogen Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#071614',     /* Deep Midnight Green */
+                        brandTeal: '#0E3E37',     /* Deep Forest Teal */
+                        brandBright: '#10B981',   /* Emerald Green Accent */
+                        brandElectric: '#F2A900', /* Vibrant Gold */
+                        brandCoral: '#FF6B6B',    /* Enthusiastic Coral Accent */
+                        brandLight: '#F3F4F6'     /* Clean off-white */
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+ 
+    <style>
+        /* Modern Scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #071614;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10B981;
+            border-radius: 4px;
+        }
+ 
+        /* Slide Transition Track */
+        .slide-window {
+            overflow: hidden;
+            position: relative;
+        }
+        .slide-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            width: 600%; /* 6 Slides */
+            height: 100%;
+        }
+        .slide-layout {
+            width: 16.6666%; /* 100 / 6 */
+            flex-shrink: 0;
+            height: 100%;
+        }
+ 
+        /* Pulsing Glow Animation for Map Pins */
+        @keyframes radar-pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(242, 169, 0, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 15px rgba(242, 169, 0, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(242, 169, 0, 0);
+            }
+        }
+        .pulse-pin {
+            animation: radar-pulse 2s infinite;
+        }
+ 
+        /* Floating Animation for Energetic Visuals */
+        @keyframes float-slow {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .floating-element {
+            animation: float-slow 6s ease-in-out infinite;
+        }
+ 
+        /* Active Sidebar Indicator */
+        .sidebar-active {
+            background-color: #10B981 !important;
+            color: #071614 !important;
+            transform: translateX(8px);
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-brandDark text-brandLight min-height-screen flex flex-col justify-between overflow-x-hidden font-sans">
+ 
+    <!-- TOP BAR -->
+    <header class="w-full px-6 py-4 bg-brandDark/80 border-b border-brandTeal/40 backdrop-blur-md flex justify-between items-center z-50">
+        <div class="flex items-center gap-3">
+            <div class="bg-brandElectric text-brandDark p-2 rounded-lg font-display font-bold text-xl tracking-tight flex items-center justify-center">
+                <i class="fa-solid fa-bolt-lightning animate-bounce"></i>
+            </div>
+            <div>
+                <span class="font-display font-bold text-lg text-white block leading-tight">STEVEN TCHEFFA PORTFOLIO</span>
+                <span class="text-xs text-brandBright font-semibold tracking-widest uppercase">Electrical Engineer | Green Hydrogen Researcher</span>
+            </div>
+        </div>
+        
+        <!-- Live Status Badge -->
+        <div class="flex items-center gap-2 bg-brandTeal/60 px-4 py-1.5 rounded-full border border-brandBright/20 text-xs text-brandBright font-medium">
+            <span class="w-2.5 h-2.5 rounded-full bg-brandBright animate-ping"></span>
+            <span>Available for Dynamic Projects</span>
+        </div>
+    </header>
+ 
+    <!-- MAIN VIEWPORT WITH INTEGRATED SIDEBAR -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-6 md:py-10 grid grid-cols-1 lg:grid-cols-4 gap-6 items-stretch">
+        
+        <!-- SIDEBAR INDEX CONTROLLER (CANVA/PPT STYLE) -->
+        <nav class="lg:col-span-1 bg-brandTeal/30 rounded-2xl p-6 border border-brandTeal/40 flex flex-col justify-between gap-8 h-fit lg:h-[680px]">
+            <div>
+                <h3 class="font-display text-xs font-bold text-brandElectric uppercase tracking-widest mb-6">Presentation Deck</h3>
+                <div class="flex flex-col gap-2.5" id="sidebar-nav">
+                    <button onclick="goToSlide(0)" class="w-full text-left px-4 py-3 rounded-xl text-sm transition-all duration-300 bg-brandDark/40 hover:bg-brandTeal/50 text-gray-300 flex items-center gap-3">
+                        <span class="font-bold text-brandBright">01</span> Who I Am
+                    </button>
+                    <button onclick="goToSlide(1)" class="w-full text-left px-4 py-3 rounded-xl text-sm transition-all duration-300 bg-brandDark/40 hover:bg-brandTeal/50 text-gray-300 flex items-center gap-3">
+                        <span class="font-bold text-brandBright">02</span> Project Coordination
+                    </button>
+                    <button onclick="goToSlide(2)" class="w-full text-left px-4 py-3 rounded-xl text-sm transition-all duration-300 bg-brandDark/40 hover:bg-brandTeal/50 text-gray-300 flex items-center gap-3">
+                        <span class="font-bold text-brandBright">03</span> Knowledge Assets
+                    </button>
+                    <button onclick="goToSlide(3)" class="w-full text-left px-4 py-3 rounded-xl text-sm transition-all duration-300 bg-brandDark/40 hover:bg-brandTeal/50 text-gray-300 flex items-center gap-3">
+                        <span class="font-bold text-brandBright">04</span> Tech Toolkit
+                    </button>
+                    <button onclick="goToSlide(4)" class="w-full text-left px-4 py-3 rounded-xl text-sm transition-all duration-300 bg-brandDark/40 hover:bg-brandTeal/50 text-gray-300 flex items-center gap-3">
+                        <span class="font-bold text-brandBright">05</span> Global Network
+                    </button>
+                    <button onclick="goToSlide(5)" class="w-full text-left px-4 py-3 rounded-xl text-sm transition-all duration-300 bg-brandDark/40 hover:bg-brandTeal/50 text-gray-300 flex items-center gap-3">
+                        <span class="font-bold text-brandBright">06</span> Why Partner Up?
+                    </button>
+                </div>
+            </div>
+ 
+            <!-- Slide Pitch Note -->
+            <div class="bg-brandDark/60 p-4 rounded-xl border border-brandTeal/50">
+                <span class="text-brandElectric text-xs font-bold block mb-1">💡 KEY STRENGTH</span>
+                <p class="text-xs text-gray-300 leading-relaxed">
+                    Combining analytical engineering logic with bulletproof execution to power your business processes.
+                </p>
+            </div>
+        </nav>
+ 
+        <!-- PRESENTATION CANVAS -->
+        <div class="lg:col-span-3 flex flex-col justify-between bg-brandDark border-2 border-brandTeal/60 rounded-3xl overflow-hidden shadow-2xl shadow-emerald-950/20 h-[680px]">
+            
+            <!-- Slide Window -->
+            <div class="slide-window flex-grow">
+                <div class="slide-track" id="slide-track">
+ 
+                    <!-- SLIDE 1: WHO I AM (Vibrant Intro) -->
+                    <div class="slide-layout p-6 md:p-10 flex flex-col justify-between bg-gradient-to-br from-brandTeal/40 via-brandDark to-brandDark">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="bg-brandBright/10 text-brandBright border border-brandBright/20 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase">ENGINEER · RESEARCHER · PROJECT LEADER</span>
+                                <h1 class="font-display font-bold text-3xl md:text-5xl mt-4 text-white leading-tight">
+                                    Engineering the Future with <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandBright to-brandElectric">Green Hydrogen</span>
+                                </h1>
+                                <p class="text-sm md:text-base text-gray-300 mt-4 max-w-2xl">
+                                    I am Monnoudé Judist Amour Steven Tcheffa, an Electrical Engineer, Renewable Energy Specialist, and WASCAL Green Hydrogen Research Scholar. My work sits at the intersection of engineering, project management, and sustainable energy development across West Africa.
+                                </p>
+                            </div>
+                        </div>
+ 
+                        <!-- 4 Highlights Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                            <div class="bg-brandTeal/20 hover:bg-brandTeal/40 border border-brandBright/10 hover:border-brandBright/30 p-4 rounded-xl transition-all duration-300 flex items-center gap-4 group">
+                                <div class="bg-brandElectric text-brandDark w-12 h-12 rounded-lg flex items-center justify-center text-xl font-bold group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-plug"></i>
+                                </div>
+                                <div>
+                                    <span class="block font-display font-semibold text-white">Electrical Engineer</span>
+                                    <span class="text-xs text-brandBright">Power systems, analysis & simulation</span>
+                                </div>
+                            </div>
+                            <div class="bg-brandTeal/20 hover:bg-brandTeal/40 border border-brandBright/10 hover:border-brandBright/30 p-4 rounded-xl transition-all duration-300 flex items-center gap-4 group">
+                                <div class="bg-brandBright text-brandDark w-12 h-12 rounded-lg flex items-center justify-center text-xl font-bold group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-seedling"></i>
+                                </div>
+                                <div>
+                                    <span class="block font-display font-semibold text-white">Renewable Energy Specialist</span>
+                                    <span class="text-xs text-brandBright">Floating solar & feasibility studies</span>
+                                </div>
+                            </div>
+                            <div class="bg-brandTeal/20 hover:bg-brandTeal/40 border border-brandBright/10 hover:border-brandBright/30 p-4 rounded-xl transition-all duration-300 flex items-center gap-4 group">
+                                <div class="bg-brandElectric text-brandDark w-12 h-12 rounded-lg flex items-center justify-center text-xl font-bold group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <span class="block font-display font-semibold text-white">WASCAL Master's Scholar</span>
+                                    <span class="text-xs text-brandBright">Green hydrogen research</span>
+                                </div>
+                            </div>
+                            <div class="bg-brandTeal/20 hover:bg-brandTeal/40 border border-brandBright/10 hover:border-brandBright/30 p-4 rounded-xl transition-all duration-300 flex items-center gap-4 group">
+                                <div class="bg-brandBright text-brandDark w-12 h-12 rounded-lg flex items-center justify-center text-xl font-bold group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-square-check"></i>
+                                </div>
+                                <div>
+                                    <span class="block font-display font-semibold text-white">Google Certified PM</span>
+                                    <span class="text-xs text-brandBright">Scrum, Kanban & ironclad timelines</span>
+                                </div>
+                            </div>
+                            <div class="bg-brandTeal/20 hover:bg-brandTeal/40 border border-brandBright/10 hover:border-brandBright/30 p-4 rounded-xl transition-all duration-300 flex items-center gap-4 group">
+                                <div class="bg-brandElectric text-brandDark w-12 h-12 rounded-lg flex items-center justify-center text-xl font-bold group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-flask"></i>
+                                </div>
+                                <div>
+                                    <span class="block font-display font-semibold text-white">Green Hydrogen Researcher</span>
+                                    <span class="text-xs text-brandBright">Energy transition, policy & infrastructure analysis</span>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Fun creative footer quote -->
+                        <div class="border-t border-brandTeal/40 pt-4 flex justify-between items-center">
+                            <span class="text-xs text-gray-400 italic">"Engineering sustainable energy solutions, one project at a time."</span>
+                            <div class="flex gap-2">
+                                <span class="w-2 h-2 rounded-full bg-brandElectric"></span>
+                                <span class="w-2 h-2 rounded-full bg-brandBright"></span>
+                                <span class="w-2 h-2 rounded-full bg-brandTeal"></span>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <!-- SLIDE 2: PROJECT COORDINATION -->
+                    <div class="slide-layout p-6 md:p-10 flex flex-col justify-between bg-gradient-to-br from-brandDark via-brandDark to-brandTeal/20">
+                        <div>
+                            <span class="bg-brandElectric/10 text-brandElectric border border-brandElectric/20 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase">TRACK RECORD OF SUCCESS</span>
+                            <h2 class="font-display font-bold text-3xl text-white mt-4">Project Coordination & Engineering</h2>
+                            <p class="text-sm text-gray-300 mt-2">Leading technical teams, research initiatives, and engineering projects with pinpoint precision.</p>
+                        </div>
+ 
+                        <!-- Quadrant Project Cards -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                            <div class="bg-brandDark/80 p-4 rounded-2xl border border-brandTeal/50 hover:border-brandBright/40 transition-all duration-300 group">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="text-brandBright text-lg"><i class="fa-solid fa-bezier-curve"></i></span>
+                                    <h4 class="font-display font-bold text-white text-base group-hover:text-brandBright transition-colors">Oasis Connect</h4>
+                                </div>
+                                <p class="text-xs text-gray-400 leading-relaxed">
+                                    Developed and coordinated a multicultural innovation community connecting young talents in technology, entrepreneurship, gaming, manga creation, and creative industries across West Africa.
+                                </p>
+                            </div>
+ 
+                            <div class="bg-brandDark/80 p-4 rounded-2xl border border-brandTeal/50 hover:border-brandBright/40 transition-all duration-300 group">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="text-brandBright text-lg"><i class="fa-solid fa-users-gear"></i></span>
+                                    <h4 class="font-display font-bold text-white text-base group-hover:text-brandBright transition-colors">Student Initiatives</h4>
+                                </div>
+                                <p class="text-xs text-gray-400 leading-relaxed">
+                                    Led multidisciplinary academic teams, coordinated technical presentations, supervised student projects, and managed communication activities within university associations.
+                                </p>
+                            </div>
+ 
+                            <div class="bg-brandDark/80 p-4 rounded-2xl border border-brandTeal/50 hover:border-brandBright/40 transition-all duration-300 group">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="text-brandBright text-lg"><i class="fa-solid fa-calendar-check"></i></span>
+                                    <h4 class="font-display font-bold text-white text-base group-hover:text-brandBright transition-colors">Event Management</h4>
+                                </div>
+                                <p class="text-xs text-gray-400 leading-relaxed">
+                                    Planned and coordinated training programs, networking events, workshops, and educational initiatives involving participants from multiple countries and disciplines.
+                                </p>
+                            </div>
+ 
+                            <div class="bg-brandDark/80 p-4 rounded-2xl border border-brandTeal/50 hover:border-brandBright/40 transition-all duration-300 group">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="text-brandBright text-lg"><i class="fa-solid fa-robot"></i></span>
+                                    <h4 class="font-display font-bold text-white text-base group-hover:text-brandBright transition-colors">AI &amp; Automation Projects</h4>
+                                </div>
+                                <p class="text-xs text-gray-400 leading-relaxed">
+                                    Designed engineering calculation tools, AI-assisted workflows, and digital systems to automate technical analysis, reporting, and project monitoring activities.
+                                </p>
+                            </div>
+ 
+                            <div class="bg-brandDark/80 p-4 rounded-2xl border border-brandTeal/50 hover:border-brandBright/40 transition-all duration-300 group">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="text-brandBright text-lg"><i class="fa-solid fa-bolt"></i></span>
+                                    <h4 class="font-display font-bold text-white text-base group-hover:text-brandBright transition-colors">Engineering Projects</h4>
+                                </div>
+                                <p class="text-xs text-gray-400 leading-relaxed">
+                                    Developed transformer sizing software (DiTraMo), floating photovoltaic research projects, and renewable energy feasibility studies using scientific and engineering methodologies.
+                                </p>
+                            </div>
+                        </div>
+ 
+                        <div class="border-t border-brandTeal/40 pt-2 flex items-center justify-between">
+                            <span class="text-xs text-brandElectric font-semibold"><i class="fa-solid fa-check-double mr-1.5"></i>Agile execution at every scale.</span>
+                        </div>
+                    </div>
+ 
+                    <!-- SLIDE 3: KNOWLEDGE MANAGEMENT -->
+                    <div class="slide-layout p-6 md:p-10 flex flex-col justify-between bg-gradient-to-br from-brandTeal/40 via-brandDark to-brandDark">
+                        <div>
+                            <span class="bg-brandBright/10 text-brandBright border border-brandBright/20 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase">THE RESEARCH ARCHIVE</span>
+                            <h2 class="font-display font-bold text-3xl text-white mt-4">Knowledge Asset Architecture</h2>
+                            <p class="text-sm text-gray-300 mt-2">Turning technical and scientific research into structured, actionable knowledge.</p>
+                        </div>
+ 
+                        <!-- 4 Strategic Pillars of Knowledge Management -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                            <div class="bg-brandTeal/10 p-4 rounded-xl border border-brandTeal/40 flex gap-3.5 items-start">
+                                <div class="text-brandElectric text-xl mt-1"><i class="fa-solid fa-file-invoice"></i></div>
+                                <div>
+                                    <h4 class="font-display font-semibold text-white text-sm mb-1">Airtight SOPs &amp; Handbooks</h4>
+                                    <p class="text-xs text-gray-400 leading-relaxed">Drafting crystal-clear Standard Operating Procedures so anyone can take over any project with ease.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-brandTeal/10 p-4 rounded-xl border border-brandTeal/40 flex gap-3.5 items-start">
+                                <div class="text-brandBright text-xl mt-1"><i class="fa-brands fa-github"></i></div>
+                                <div>
+                                    <h4 class="font-display font-semibold text-white text-sm mb-1">GitHub Versioning &amp; Repos</h4>
+                                    <p class="text-xs text-gray-400 leading-relaxed">Publishing engineering tools, technical documentation, and research-oriented software projects while maintaining structured version control practices.</p>
+                                </div>
+                            </div>
+ 
+                            <div class="bg-brandTeal/10 p-4 rounded-xl border border-brandTeal/40 flex gap-3.5 items-start">
+                                <div class="text-brandElectric text-xl mt-1"><i class="fa-solid fa-chart-pie"></i></div>
+                                <div>
+                                    <h4 class="font-display font-semibold text-white text-sm mb-1">Analytical Report Writing</h4>
+                                    <p class="text-xs text-gray-400 leading-relaxed">Producing technical reports, policy briefs, feasibility studies, and engineering analyses for renewable energy, power systems, and green hydrogen projects.</p>
+                                </div>
+                            </div>
+ 
+                            <div class="bg-brandTeal/10 p-4 rounded-xl border border-brandTeal/40 flex gap-3.5 items-start">
+                                <div class="text-brandBright text-xl mt-1"><i class="fa-solid fa-seedling"></i></div>
+                                <div>
+                                    <h4 class="font-display font-semibold text-white text-sm mb-1">Veille &amp; Academic Research</h4>
+                                    <p class="text-xs text-gray-400 leading-relaxed">Conducting multidisciplinary research in renewable energy systems, green hydrogen infrastructures, energy policy, climate resilience, and sustainable development.</p>
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <div class="border-t border-brandTeal/40 pt-2 flex justify-between items-center">
+                            <span class="text-xs text-gray-400 italic">"Turning research into real-world engineering impact."</span>
+                        </div>
+                    </div>
+ 
+                    <!-- SLIDE 4: TOOLS & SKILLS -->
+                    <div class="slide-layout p-6 md:p-10 flex flex-col justify-between bg-gradient-to-br from-brandDark via-brandDark to-brandTeal/20">
+                        <div>
+                            <span class="bg-brandElectric/10 text-brandElectric border border-brandElectric/20 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase">THE TECHNICAL COCKPIT</span>
+                            <h2 class="font-display font-bold text-3xl text-white mt-4">Engineering &amp; Project Management Toolkit</h2>
+                            <p class="text-sm text-gray-300 mt-2">Combining engineering software with top-shelf project management tools.</p>
+                        </div>
+ 
+                        <!-- Grid of badges and descriptions -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-4">
+                            <div class="bg-brandDark p-4 rounded-2xl border border-brandTeal/50 flex flex-col gap-3">
+                                <h3 class="font-display text-xs font-bold text-brandBright tracking-widest uppercase">Planning &amp; Tracking</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-brandTeal/40 px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5 border border-brandBright/10">
+                                        <i class="fa-brands fa-trello text-brandBright"></i> Trello Workspace
+                                    </span>
+                                    <span class="bg-brandTeal/40 px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5 border border-brandBright/10">
+                                        <i class="fa-solid fa-chart-gantt text-brandElectric"></i> Gantt Charts
+                                    </span>
+                                    <span class="bg-brandTeal/40 px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5 border border-brandBright/10">
+                                        <i class="fa-solid fa-arrows-spin text-brandBright"></i> Scrum/Agile
+                                    </span>
+                                </div>
+                                <p class="text-xs text-gray-400">
+                                    I design Kanban boards with automation rules, create dynamic roadmap milestones, and manage sprints like clockwork.
+                                </p>
+                            </div>
+ 
+                            <div class="bg-brandDark p-4 rounded-2xl border border-brandTeal/50 flex flex-col gap-3">
+                                <h3 class="font-display text-xs font-bold text-brandElectric tracking-widest uppercase">Data &amp; Operations</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-brandTeal/40 px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5 border border-brandBright/10">
+                                        <i class="fa-solid fa-file-excel text-brandBright"></i> Excel / Sheets Pro
+                                    </span>
+                                    <span class="bg-brandTeal/40 px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5 border border-brandBright/10">
+                                        <i class="fa-brands fa-google text-brandElectric"></i> Google Workspace
+                                    </span>
+                                    <span class="bg-brandTeal/40 px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5 border border-brandBright/10">
+                                        <i class="fa-solid fa-robot text-brandBright"></i> Zapier / Make
+                                    </span>
+                                </div>
+                                <p class="text-xs text-gray-400">
+                                    Formulas, macro-planning, cross-functional spreadsheets, and automated pipelines connecting drive systems to communication hubs.
+                                </p>
+                            </div>
+ 
+                            <div class="bg-brandDark p-4 rounded-2xl border border-brandTeal/50 flex flex-col gap-3">
+                                <h3 class="font-display text-xs font-bold text-brandCoral tracking-widest uppercase">Engineering &amp; Analysis</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-brandTeal/40 px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5 border border-brandBright/10">
+                                        <i class="fa-solid fa-square-root-variable text-brandBright"></i> MATLAB
+                                    </span>
+                                    <span class="bg-brandTeal/40 px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5 border border-brandBright/10">
+                                        <i class="fa-solid fa-diagram-project text-brandElectric"></i> Simulink
+                                    </span>
+                                    <span class="bg-brandTeal/40 px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5 border border-brandBright/10">
+                                        <i class="fa-solid fa-solar-panel text-brandBright"></i> PVsyst
+                                    </span>
+                                    <span class="bg-brandTeal/40 px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5 border border-brandBright/10">
+                                        <i class="fa-solid fa-drafting-compass text-brandElectric"></i> AutoCAD
+                                    </span>
+                                    <span class="bg-brandTeal/40 px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5 border border-brandBright/10">
+                                        <i class="fa-brands fa-python text-brandBright"></i> Python
+                                    </span>
+                                    <span class="bg-brandTeal/40 px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5 border border-brandBright/10">
+                                        <i class="fa-solid fa-chart-simple text-brandElectric"></i> R
+                                    </span>
+                                    <span class="bg-brandTeal/40 px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5 border border-brandBright/10">
+                                        <i class="fa-solid fa-microchip text-brandBright"></i> Arduino
+                                    </span>
+                                    <span class="bg-brandTeal/40 px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5 border border-brandBright/10">
+                                        <i class="fa-solid fa-industry text-brandElectric"></i> TIA Portal
+                                    </span>
+                                </div>
+                                <p class="text-xs text-gray-400">
+                                    Power system analysis, renewable energy modelling, transformer sizing, simulation, optimization, and technical data processing for engineering applications.
+                                </p>
+                            </div>
+                        </div>
+ 
+                        <div class="border-t border-brandTeal/40 pt-2 flex justify-between items-center">
+                            <span class="text-xs text-brandBright font-semibold"><i class="fa-solid fa-code mr-1.5"></i>Engineering precision meets project execution.</span>
+                        </div>
+                    </div>
+ 
+                    <!-- SLIDE 5: MULTICULTURAL EXPERIENCE (With beautiful interactive custom-styled SVG network Map) -->
+                    <div class="slide-layout p-6 md:p-10 flex flex-col justify-between bg-gradient-to-br from-brandTeal/40 via-brandDark to-brandDark">
+                        <div>
+                            <span class="bg-brandBright/10 text-brandBright border border-brandBright/20 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase">INTERNATIONAL SYNERGY</span>
+                            <h2 class="font-display font-bold text-3xl text-white mt-4">Bénin → Togo → Ghana → Niger</h2>
+                            <p class="text-sm text-gray-300 mt-2">A multicultural academic and professional journey across West Africa. Tap a node to explore each chapter!</p>
+                        </div>
+ 
+                        <!-- 2 Columns: Map Display vs Clickable Info -->
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center my-2">
+                            <!-- Visual Stylized Region Map Container -->
+                            <div class="md:col-span-7 bg-brandDark/80 p-3 rounded-2xl border border-brandTeal/60 flex items-center justify-center relative overflow-hidden h-[300px]">
+                                <!-- Stylized abstract network representing regional interconnectedness -->
+                                <svg viewBox="0 0 400 250" class="w-full h-full text-brandTeal">
+                                    <!-- Simplified West Africa Grid Map Outline -->
+                                    <path d="M 50,50 Q 80,40 120,50 T 180,60 T 260,30 T 320,60 T 360,110 T 310,180 T 270,190 T 200,210 T 150,220 T 100,190 Z" fill="#0E3E37" fill-opacity="0.25" stroke="#10B981" stroke-width="1.5" stroke-dasharray="3 3"/>
+                                    
+                                    <!-- Interconnecting logic networks lines -->
+                                    <line x1="100" y1="90" x2="160" y2="170" stroke="#10B981" stroke-width="1" stroke-opacity="0.3" />
+                                    <line x1="160" y1="170" x2="200" y2="185" stroke="#10B981" stroke-width="1" stroke-opacity="0.3" />
+                                    <line x1="200" y1="185" x2="260" y2="90" stroke="#10B981" stroke-width="1" stroke-opacity="0.3" />
+                                    <line x1="100" y1="90" x2="260" y2="90" stroke="#10B981" stroke-width="1" stroke-opacity="0.3" />
+ 
+                                    <!-- Pulse Circle elements behind pins -->
+                                    <!-- NIGER (Niamey) -->
+                                    <circle cx="260" cy="90" r="10" fill="#F2A900" fill-opacity="0.3" class="animate-ping"/>
+                                    <circle cx="260" cy="90" r="5" fill="#F2A900" id="pin-niger" class="cursor-pointer" onclick="showRegionInfo('niger')"/>
+                                    <text x="270" y="85" fill="#FFFFFF" font-family="Space Grotesk" font-size="10" font-weight="bold">Niger</text>
+ 
+                                    <!-- BENIN (Cotonou) -->
+                                    <circle cx="200" cy="185" r="10" fill="#10B981" fill-opacity="0.3" class="animate-ping"/>
+                                    <circle cx="200" cy="185" r="5" fill="#10B981" id="pin-benin" class="cursor-pointer" onclick="showRegionInfo('benin')"/>
+                                    <text x="210" y="195" fill="#FFFFFF" font-family="Space Grotesk" font-size="10" font-weight="bold">Benin</text>
+ 
+                                    <!-- TOGO (Lomé) -->
+                                    <circle cx="160" cy="170" r="10" fill="#FF6B6B" fill-opacity="0.3" class="animate-ping"/>
+                                    <circle cx="160" cy="170" r="5" fill="#FF6B6B" id="pin-togo" class="cursor-pointer" onclick="showRegionInfo('togo')"/>
+                                    <text x="130" y="165" fill="#FFFFFF" font-family="Space Grotesk" font-size="10" font-weight="bold">Togo</text>
+ 
+                                    <!-- GHANA (Accra) -->
+                                    <circle cx="100" cy="90" r="10" fill="#F2A900" fill-opacity="0.3" class="animate-ping"/>
+                                    <circle cx="100" cy="90" r="5" fill="#F2A900" id="pin-ghana" class="cursor-pointer" onclick="showRegionInfo('ghana')"/>
+                                    <text x="75" y="85" fill="#FFFFFF" font-family="Space Grotesk" font-size="10" font-weight="bold">Ghana</text>
+                                </svg>
+                                
+                                <div class="absolute bottom-2 left-2 bg-brandDark/90 px-3 py-1 rounded-md border border-brandTeal/60 text-[10px] text-gray-400">
+                                    🎯 Click any node to reveal milestones!
+                                </div>
+                            </div>
+ 
+                            <!-- Description cards that update dynamically -->
+                            <div class="md:col-span-5 bg-brandTeal/30 p-4 rounded-2xl border border-brandTeal/50 min-h-[180px] flex flex-col justify-between" id="region-card">
+                                <div>
+                                    <h4 class="font-display font-bold text-brandElectric text-base flex items-center gap-2" id="region-title">
+                                        <i class="fa-solid fa-earth-africa"></i> WASCAL Core Ecosystem
+                                    </h4>
+                                    <p class="text-xs text-gray-300 mt-2 leading-relaxed" id="region-desc">
+                                        A journey through renewable energy engineering, graduate research, and international mobility across Benin, Togo, Ghana, and Niger — building deep technical expertise and multicultural fluency.
+                                    </p>
+                                </div>
+                                <div class="text-[10px] text-brandBright font-semibold flex items-center gap-1.5 mt-2">
+                                    <i class="fa-solid fa-globe"></i> Active cross-border synergy
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- Regional Footnote -->
+                        <div class="border-t border-brandTeal/40 pt-2 flex items-center justify-between">
+                            <span class="text-xs text-gray-400"><i class="fa-solid fa-user-graduate text-brandBright mr-1"></i> Bridging clean energy science and engineering execution.</span>
+                        </div>
+                    </div>
+ 
+                    <!-- SLIDE 6: WHY WORK WITH ME (CTA) -->
+                    <div class="slide-layout p-6 md:p-10 flex flex-col justify-between bg-gradient-to-br from-brandDark via-brandDark to-brandTeal/50">
+                        <div>
+                            <span class="bg-brandBright/10 text-brandBright border border-brandBright/20 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase">READY TO LAUNCH</span>
+                            <h2 class="font-display font-bold text-3xl text-white mt-4">Why I Am Your Ideal Partner</h2>
+                            <p class="text-sm text-gray-300 mt-1">Engineering expertise, research rigor, and structured project delivery.</p>
+                        </div>
+ 
+                        <!-- 4 Value Points + CTA Box -->
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 my-2">
+                            <!-- Pillars column -->
+                            <div class="md:col-span-6 flex flex-col gap-3">
+                                <div class="flex items-start gap-2.5">
+                                    <span class="text-brandBright text-sm mt-1"><i class="fa-solid fa-circle-check"></i></span>
+                                    <div>
+                                        <h4 class="font-display font-semibold text-white text-sm">Technical Expertise</h4>
+                                        <p class="text-xs text-gray-400">Electrical engineering, renewable energy systems, green hydrogen, data analysis, and applied research capabilities.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-2.5">
+                                    <span class="text-brandBright text-sm mt-1"><i class="fa-solid fa-circle-check"></i></span>
+                                    <div>
+                                        <h4 class="font-display font-semibold text-white text-sm">Project Leadership</h4>
+                                        <p class="text-xs text-gray-400">Certified project management skills combined with hands-on experience coordinating multidisciplinary teams and international collaborations.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-2.5">
+                                    <span class="text-brandBright text-sm mt-1"><i class="fa-solid fa-circle-check"></i></span>
+                                    <div>
+                                        <h4 class="font-display font-semibold text-white text-sm">Multicultural Advantage</h4>
+                                        <p class="text-xs text-gray-400">Experience living and studying across Benin, Togo, Ghana, and Niger while working daily in multilingual and multicultural environments.</p>
+                                    </div>
+                                </div>
+                            </div>
+ 
+                            <!-- Interactive Call-To-Action Box -->
+                            <div class="md:col-span-6 bg-brandDark border-2 border-brandElectric/30 p-4 rounded-2xl flex flex-col justify-between text-center relative overflow-hidden group hover:border-brandBright/50 transition-all duration-300">
+                                <div>
+                                    <h4 class="font-display font-bold text-white text-base">Let's Team Up!</h4>
+                                    <p class="text-xs text-gray-400 mt-1">Ready to hand off operations and scale your technical projects?</p>
+                                </div>
+ 
+                                <div class="my-3 flex flex-col gap-1.5 text-left text-xs bg-brandTeal/30 p-2.5 rounded-xl border border-brandTeal/50">
+                                    <div class="flex items-center gap-2 text-gray-300"><i class="fa-solid fa-envelope text-brandBright"></i> judistasm14@gmail.com</div>
+                                    <div class="flex items-center gap-2 text-gray-300"><i class="fa-brands fa-whatsapp text-brandElectric"></i> +228 98 83 71 17</div>
+                                </div>
+ 
+                                <a href="mailto:technical.va@example.com" class="bg-brandElectric text-brandDark hover:bg-brandBright hover:text-brandDark font-display font-bold py-2 px-4 rounded-xl text-xs uppercase tracking-wider transition-all duration-300 shadow-lg shadow-brandElectric/10 hover:shadow-brandBright/20">
+                                    Book 15-Min Briefing <i class="fa-solid fa-arrow-trend-up ml-1 animate-pulse"></i>
+                                </a>
+                            </div>
+                        </div>
+ 
+                        <!-- Footer -->
+                        <div class="border-t border-brandTeal/40 pt-2 flex items-center justify-between">
+                            <span class="text-xs text-gray-400">© 2026 Steven Tcheffa Portfolio</span>
+                            <span class="text-xs text-brandBright font-semibold">Ready for deployment</span>
+                        </div>
+                    </div>
+ 
+                </div>
+            </div>
+ 
+            <!-- CONTROLS FOOTER -->
+            <div class="px-6 py-4 bg-brandDark/90 border-t border-brandTeal/40 flex justify-between items-center z-40">
+                <div class="flex gap-2">
+                    <button onclick="prevSlide()" class="w-10 h-10 bg-brandTeal/40 hover:bg-brandTeal text-brandLight hover:text-brandElectric rounded-xl flex items-center justify-center transition-all duration-300 border border-brandTeal/60">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button onclick="nextSlide()" class="w-10 h-10 bg-brandTeal/40 hover:bg-brandTeal text-brandLight hover:text-brandElectric rounded-xl flex items-center justify-center transition-all duration-300 border border-brandTeal/60">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+ 
+                <!-- Slide Tracker Dots -->
+                <div class="flex items-center gap-2">
+                    <span class="text-xs text-gray-400 font-display font-medium" id="slide-num-text">Slide 1 of 6</span>
+                    <div class="flex gap-1.5" id="slide-indicator-dots">
+                        <!-- Filled in dynamically -->
+                    </div>
+                </div>
+ 
+                <!-- Presenter Badge -->
+                <div class="hidden sm:flex items-center gap-1.5 text-xs text-brandBright font-medium">
+                    <i class="fa-solid fa-tv text-brandElectric"></i>
+                    <span>Presentation Mode</span>
+                </div>
+            </div>
+ 
+        </div>
+    </main>
+ 
+    <!-- FOOTER SOCIAL BAR -->
+    <footer class="w-full bg-brandDark py-4 text-center border-t border-brandTeal/20 text-xs text-gray-400">
+        <div class="flex justify-center gap-6 mb-2">
+            <a href="#" class="hover:text-brandBright transition-colors"><i class="fa-brands fa-linkedin text-base"></i> LinkedIn</a>
+            <a href="#" class="hover:text-brandBright transition-colors"><i class="fa-brands fa-github text-base"></i> GitHub</a>
+            <a href="#" class="hover:text-brandBright transition-colors"><i class="fa-brands fa-whatsapp text-base"></i> WhatsApp</a>
+        </div>
+        <p>Built with precision &amp; enthusiasm for the next generation of operations.</p>
+    </footer>
+ 
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 6;
+        const slideTrack = document.getElementById('slide-track');
+        const sidebarNav = document.getElementById('sidebar-nav');
+        const slideNumText = document.getElementById('slide-num-text');
+        const slideDotsContainer = document.getElementById('slide-indicator-dots');
+ 
+        // Dynamic Map Region Data
+        const regionData = {
+            niger: {
+                title: "<i class='fa-solid fa-earth-africa'></i> Niger (WASCAL, Niamey)",
+                desc: "Currently pursuing WASCAL Master's Research in Green Hydrogen, focusing on energy policies, infrastructure development, and sustainable energy transition strategies."
+            },
+            benin: {
+                title: "<i class='fa-solid fa-bolt'></i> Benin (Home Base)",
+                desc: "Home country where I developed strong foundations in renewable energy engineering, technical leadership, entrepreneurship, and community development initiatives."
+            },
+            togo: {
+                title: "<i class='fa-solid fa-circle-nodes'></i> Togo (Professional Master's)",
+                desc: "Completed a Professional Master's Degree in Electrical Engineering while leading academic collaborations and participating in energy-related research projects."
+            },
+            ghana: {
+                title: "<i class='fa-solid fa-language'></i> Ghana (WASCAL Mobility)",
+                desc: "Participated in WASCAL international mobility and English immersion training, strengthening multicultural communication and international teamwork capabilities."
+            }
+        };
+ 
+        function showRegionInfo(region) {
+            const data = regionData[region];
+            if (data) {
+                document.getElementById('region-title').innerHTML = data.title;
+                document.getElementById('region-desc').innerText = data.desc;
+                
+                // Highlight Map Pin Selection Style
+                ['pin-niger', 'pin-benin', 'pin-togo', 'pin-ghana'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.setAttribute('stroke', 'none');
+                        el.setAttribute('stroke-width', '0');
+                    }
+                });
+                const activeEl = document.getElementById(`pin-${region}`);
+                if (activeEl) {
+                    activeEl.setAttribute('stroke', '#FFFFFF');
+                    activeEl.setAttribute('stroke-width', '2');
+                }
+            }
+        }
+ 
+        // Initialize Tracker Dots
+        function initTracker() {
+            slideDotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('span');
+                dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${i === currentSlide ? 'bg-brandBright w-4' : 'bg-brandTeal/60'}`;
+                slideDotsContainer.appendChild(dot);
+            }
+            updateSidebar();
+        }
+ 
+        function updateSidebar() {
+            const buttons = sidebarNav.querySelectorAll('button');
+            buttons.forEach((btn, index) => {
+                if (index === currentSlide) {
+                    btn.classList.add('sidebar-active');
+                } else {
+                    btn.classList.remove('sidebar-active');
+                }
+            });
+            slideNumText.innerText = `Slide ${currentSlide + 1} of ${totalSlides}`;
+        }
+ 
+        function goToSlide(slideIndex) {
+            if (slideIndex >= 0 && slideIndex < totalSlides) {
+                currentSlide = slideIndex;
+                slideTrack.style.transform = `translateX(-${currentSlide * 16.6666}%)`;
+                initTracker();
+            }
+        }
+ 
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                goToSlide(currentSlide + 1);
+            } else {
+                goToSlide(0); // Wrap around
+            }
+        }
+ 
+        function prevSlide() {
+            if (currentSlide > 0) {
+                goToSlide(currentSlide - 1);
+            } else {
+                goToSlide(totalSlides - 1); // Wrap around to end
+            }
+        }
+ 
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+ 
+        // Initialize state on load
+        window.onload = function() {
+            initTracker();
+        };
+    </script>
+</body>
+</html>
+ 
