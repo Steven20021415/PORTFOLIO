@@ -1,2 +1,4 @@
 # PORTFOLIO
-Here is my digital portfolio, with possibility to improve or modify
+Do you wanna know more about me ? Come to discover my history
+
+Link : https://jasmportfolio.netlify.app/
